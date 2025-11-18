@@ -1,0 +1,16 @@
+# Binaries for the current project
+*.exe
+*.test
+*.prof
+
+# Compiled packages and cached build artifacts
+/pkg/
+/bin/
+# Go module cache
+/go.mod.sum
+
+# Editor-specific files (common examples)
+.idea/
+.vscode/
+*.swp
+*~

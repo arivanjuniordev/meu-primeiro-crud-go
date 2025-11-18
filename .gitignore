@@ -1,16 +1,15 @@
-# Binaries for the current project
+# Binaries for programs and plugins
 *.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
 *.test
-*.prof
 
-# Compiled packages and cached build artifacts
-/pkg/
-/bin/
-# Go module cache
-/go.mod.sum
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
 
-# Editor-specific files (common examples)
-.idea/
-.vscode/
-*.swp
-*~
+# Dependency directories (remove the comment below to include it)
+# vendor/

@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 
+	"github.com/arivanjuniordev/meu-primeiro-crud-go/src/configuration/logger"
 	"github.com/arivanjuniordev/meu-primeiro-crud-go/src/controller/routes"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
@@ -14,6 +15,9 @@ func main() {
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
+
+	logger.Init()
+	logger.Info("About to start user application")
 
 	router := gin.Default()
 	routes.InitRoutes(&router.RouterGroup)

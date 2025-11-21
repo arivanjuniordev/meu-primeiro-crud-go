@@ -9,38 +9,38 @@ import (
 	"go.uber.org/zap"
 )
 
-type UserDomain struct {
-	Email    string
-	Password string
-	Name     string
-	Age      int8
+func NewUserDomain(email string, password string, name string, age int8) UserDomainInterface {
+	return &userDomain{
+		email,
+		password,
+		name,
+		age,
+	}
 }
 
-func NewUserDomain(email string, password string, name string, age int8) UserDomainInterface {
-	return &UserDomain{
-		Email:    email,
-		Password: password,
-		Name:     name,
-		Age:      age,
-	}
+type userDomain struct {
+	email    string
+	password string
+	name     string
+	age      int8
 }
 
 type UserDomainInterface interface {
 	CreateUser() *rest_err.RestErr
 	UpdateUser(string) *rest_err.RestErr
-	FindUser(string) (*UserDomain, *rest_err.RestErr)
+	FindUser(string) (*userDomain, *rest_err.RestErr)
 	DeleteUser(string) *rest_err.RestErr
 }
 
-func (ud *UserDomain) EncriptPassword() {
+func (ud *userDomain) EncriptPassword() {
 	hash := md5.New()
 	defer hash.Reset()
-	hash.Write([]byte(ud.Password))
-	ud.Password = hex.EncodeToString(hash.Sum(nil))
+	hash.Write([]byte(ud.password))
+	ud.password = hex.EncodeToString(hash.Sum(nil))
 
 	logger.Info("User password encrypted",
 		zap.String("journey", "createUser encriptPassword"),
-		zap.String("password", ud.Password),
+		zap.String("password", ud.password),
 	)
 
 }
